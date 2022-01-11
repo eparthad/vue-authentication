@@ -40,6 +40,21 @@ export const auth = {
             })
         },
 
+        REGISTRATION(context, regData){
+            return new Promise((resolve, reject)=>{
+                axios.post('/register', regData)
+                .then((res) => {
+                    // console.log(res.data)
+                    context.commit('SET_AUTH_TOKEN', res.data.access_token)
+                    context.commit('SET_AUTH_INFO', res.data.user)
+                    resolve(res)
+                }).catch((err) => {
+                    // console.log(err.response.data.errors)
+                    reject(err)
+                });
+            })
+        },
+
         LOGOUT(context){
             axios.defaults.headers.common['Authorization'] = "Bearer " + context.state.auth_token; 
 

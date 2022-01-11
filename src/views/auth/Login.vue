@@ -82,14 +82,14 @@
 export default {
   name: "Login",
 
-  data() {
-    return {
-        form: {
-            email: null,
-            password: null,
-        },
+    data() {
+        return {
+            form: {
+                email: null,
+                password: null,
+            },
 
-        errors: {},
+            errors: {},
         };
     },
     methods: {
